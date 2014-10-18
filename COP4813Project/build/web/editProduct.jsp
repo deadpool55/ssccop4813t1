@@ -14,9 +14,9 @@
     </head>
     <body>
         <h1>Edit the product below:</h1>
-        <label>Code: ${product.code}</label>  
-        <label>Product Description: ${product.description}</label>  
-        <label>Product Price: ${product.getPriceFormat()}</label>  
+        <label>Code: ${product.getCode()}</label>  
+        <label>Product Description: ${product.getDescription()}</label>  
+        <label>Product Price: ${product.getPrice()}</label>  
         <form action="<%= response.encodeURL("products.jsp")%>" method="post">  
     <input type="submit" name="view" value="Update Product"> </form>  
     <form action="<%= response.encodeURL("products.jsp")%>" method="post">  

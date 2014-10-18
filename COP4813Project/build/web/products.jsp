@@ -4,6 +4,8 @@
     Author     : Heather
 --%>
 
+<%@page import="data.ProductIO"%>
+<%@page import="data.Product"%>
 <!DOCTYPE html>
 <html>
     <head>
@@ -21,34 +23,22 @@
         <th>&nbsp;</th>
         <th>&nbsp;</th>
     </tr>
-    <tr>
-        <td>8601</td>
-        <td>86 (the band) - True Life Songs and Pictures</td>
-        <td class="right">$14.95</td>
-        <td><a href="<%=response.encodeURL("editProduct.jsp")%>">Edit</a></td>
-        <td><a href="<%=response.encodeURL("deleteProduct.jsp")%>">Delete</a></td>
-            </tr>
-    <tr>
-        <td>pf01</td>
-        <td>Paddlefoot - The first CD</td>
-        <td class="right">$12.95</td>
-        <td><a href="<%=response.encodeURL("editProduct.jsp")%>">Edit</a></td>
-        <td><a href="<%=response.encodeURL("deleteProduct.jsp")%>">Delete</a></td>
-    </tr>
-    <tr>
-        <td>pf02</td>
-        <td>Paddlefoot - The second CD</td>
-        <td class="right">$14.95</td>
-        <td><a href="<%=response.encodeURL("editProduct.jsp")%>">Edit</a></td>
-        <td><a href="<%=response.encodeURL("deleteProduct.jsp")%>">Delete</a></td>
-    </tr>
-    <tr>
-        <td>jr01</td>
-        <td>Joe Rut - Genuine Wood Grained Finish</td>
-        <td class="right">$14.95</td>
-        <td><a href="<%=response.encodeURL("editProduct.jsp")%>">Edit</a></td>
-        <td><a href="<%=response.encodeURL("deleteProduct.jsp")%>">Delete</a></td>
-                 </tr>
+    <%
+       ProductIO productdb = new ProductIO();
+       for (Product item : productdb.selectProducts()) {
+           System.out.println(item.getAlbumName());
+           %>
+                <tr>
+                    <td><% item.getCode(); %></td>
+                    <td><% item.getArtistName(); %> - <% item.getAlbumName(); %></td>
+                    <td class="right"><% item.getPrice(); %></td>
+                    <td><a href="<%=response.encodeURL("editProduct.jsp")%>">Edit</a></td>
+                    <td><a href="<%=response.encodeURL("deleteProduct.jsp")%>">Delete</a></td>
+                </tr>
+           <%
+       }
+    %>
+    
 </table>
         <form action="<%= response.encodeURL("addProduct.jsp")%>" method="post">  
             <input type="submit" name="add" value="Add Product"> </form>

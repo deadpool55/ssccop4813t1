@@ -7,11 +7,11 @@ import java.util.*;
 public class ProductIO {
 
     private static List<Product> products = null;
-    private static String filePath = null;
+    private static String filePath =  ProductIO.class.getResource("products.txt").toString();
 
     // Called once from the controller based on servlet context
     public static void init(String filePath) {
-        ProductIO.filePath = filePath;
+        ProductIO.filePath = ProductIO.class.getResource("products.txt").toString();
     }
 
     public static List<Product> selectProducts() {
@@ -27,6 +27,7 @@ public class ProductIO {
                 StringTokenizer t = new StringTokenizer(line, "|");
                 if (t.countTokens() >= 3) {
                     String code = t.nextToken();
+                    System.out.println(code);
                     String description = t.nextToken();
                     String priceAsString = t.nextToken();
                     double price = Double.parseDouble(priceAsString);

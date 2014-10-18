@@ -13,9 +13,9 @@
     </head>  
     <body>  
         <h1>Are you sure you want to delete this product? </h1>  
-        <label>Code: ${product.code}</label>  
-        <label>Product Description: ${product.description}</label>  
-        <label>Product Price: ${product.getPriceFormat()}</label>  
+        <label>Code: ${product.getCode()}</label>  
+        <label>Product Description: ${product.getDescription()}</label>  
+        <label>Product Price: ${product.getPrice()}</label>  
         <form action="<%= response.encodeURL("products.jsp")%>" method="post">  
     <input type="submit" name="view" value="Yes"> </form>  
     <form action="<%= response.encodeURL("products.jsp")%>" method="post">  
