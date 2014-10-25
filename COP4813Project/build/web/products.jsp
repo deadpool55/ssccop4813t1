@@ -5,7 +5,7 @@
 --%>
 
 <%@page import="data.ProductIO"%>
-<%@page import="data.Product"%>
+<%@page import="business.Product"%>
 <!DOCTYPE html>
 <html>
     <head>
@@ -24,14 +24,17 @@
         <th>&nbsp;</th>
     </tr>
     <%
+       ServletContext sc = this.getServletContext();
+       String productPath = sc.getRealPath("WEB-INF/products.txt");
        ProductIO productdb = new ProductIO();
-       for (Product item : productdb.selectProducts()) {
-           System.out.println(item.getAlbumName());
+       productdb.init(productPath);
+       
+       for (business.Product item : productdb.selectProducts()) {
            %>
                 <tr>
-                    <td><% item.getCode(); %></td>
-                    <td><% item.getArtistName(); %> - <% item.getAlbumName(); %></td>
-                    <td class="right"><% item.getPrice(); %></td>
+                    <td><%= item.getCode() %></td>
+                    <td><%= item.getArtistName() %> - <%= item.getAlbumName() %></td>
+                    <td class="right"><%= item.getPrice() %></td>
                     <td><a href="<%=response.encodeURL("editProduct.jsp")%>">Edit</a></td>
                     <td><a href="<%=response.encodeURL("deleteProduct.jsp")%>">Delete</a></td>
                 </tr>

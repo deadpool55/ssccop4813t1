@@ -1,4 +1,4 @@
-package data;
+package business;
 
 import java.text.NumberFormat;
 import java.io.Serializable;

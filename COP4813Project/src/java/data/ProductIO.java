@@ -1,5 +1,6 @@
 package data;
 
+import business.Product;
 import java.io.*;
 import java.util.*;
 
@@ -7,11 +8,11 @@ import java.util.*;
 public class ProductIO {
 
     private static List<Product> products = null;
-    private static String filePath =  ProductIO.class.getResource("products.txt").toString();
-
+    private static String filePath = null;
+    
     // Called once from the controller based on servlet context
     public static void init(String filePath) {
-        ProductIO.filePath = ProductIO.class.getResource("products.txt").toString();
+        ProductIO.filePath = filePath;
     }
 
     public static List<Product> selectProducts() {
@@ -27,7 +28,6 @@ public class ProductIO {
                 StringTokenizer t = new StringTokenizer(line, "|");
                 if (t.countTokens() >= 3) {
                     String code = t.nextToken();
-                    System.out.println(code);
                     String description = t.nextToken();
                     String priceAsString = t.nextToken();
                     double price = Double.parseDouble(priceAsString);
@@ -36,7 +36,7 @@ public class ProductIO {
                     p.setCode(code);
                     p.setDescription(description);
                     p.setPrice(price);
-
+                    System.out.println(p.getCode());
                     products.add(p);
                 }
                 line = in.readLine();
