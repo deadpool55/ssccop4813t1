@@ -8,7 +8,7 @@
     <head>
         <meta charset="utf-8">
         <title>Product Maintenance</title>
-        <link rel="stylesheet" href="styles/main.css">
+        <link rel="stylesheet" href="main.css">
     </head>
     <body>
         <form action="survey" method="post">

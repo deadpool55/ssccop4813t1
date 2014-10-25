@@ -8,7 +8,7 @@
 <html>  
     <head>  
         <meta charset="utf-8">
-        <link rel="stylesheet" href="styles/main.css" type="text/css">  
+        <link rel="stylesheet" href="main.css" type="text/css">  
         <title>Product Maintenance</title>  
     </head>  
     <body>  
