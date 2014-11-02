@@ -15,14 +15,16 @@
     <body>  
         <form action="addProduct.jsp" method="post">  </form>
 <h1>Add product information below: </h1>
+<form action="<%= response.encodeURL("products.jsp")%>" method="post"> 
 <table>  
-<tr><td>Code:</td><td><input type="text" name="code" size="10"></td></tr>  
-<tr><td>Description:</td><td><input type="text" name="description" size="25"></td></tr>  
-<tr><td>Price:</td><td><input type="text" name="price" size="15"></td></tr>  
+   
+<tr><td>Code:</td><td><input type="text" name="addCode" size="10"></td></tr>  
+<tr><td>Description:</td><td><input type="text" name="newDescription" size="25"></td></tr>  
+<tr><td>Price:</td><td><input type="text" name="newPrice" size="15"></td></tr>  
 </table>  
 <br>  
   
-<form action="<%= response.encodeURL("products.jsp")%>" method="post">  
+ 
   <input type="submit" name="update" value="Add Product">  
 </form>  
   

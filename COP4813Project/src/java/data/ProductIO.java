@@ -36,7 +36,6 @@ public class ProductIO {
                     p.setCode(code);
                     p.setDescription(description);
                     p.setPrice(price);
-                    System.out.println(p.getCode());
                     products.add(p);
                 }
                 line = in.readLine();

@@ -28,15 +28,36 @@
        String productPath = sc.getRealPath("WEB-INF/products.txt");
        ProductIO productdb = new ProductIO();
        productdb.init(productPath);
-       
+       String newDescription = request.getParameter("newDescription");
+       String newPrice = request.getParameter("newPrice");
+       String editCode = request.getParameter("editCode");
+       String deleteCode = request.getParameter("deleteCode");
+       String addCode = request.getParameter("addCode");
+       if (editCode != null) {
+           Product editProduct = productdb.selectProduct(editCode);
+           editProduct.setDescription(newDescription);
+           editProduct.setPrice(Double.parseDouble(newPrice));
+           productdb.updateProduct(editProduct);
+       }
+       if (deleteCode != null) {
+           Product deleteProduct = productdb.selectProduct(deleteCode);
+           productdb.deleteProduct(deleteProduct);
+       }
+       if (addCode != null) {
+           Product addProduct = new Product();
+           addProduct.setCode(addCode);
+           addProduct.setDescription(newDescription);
+           addProduct.setPrice(Double.parseDouble(newPrice));
+           productdb.insertProduct(addProduct);
+       }
        for (business.Product item : productdb.selectProducts()) {
            %>
                 <tr>
                     <td><%= item.getCode() %></td>
                     <td><%= item.getArtistName() %> - <%= item.getAlbumName() %></td>
                     <td class="right"><%= item.getPrice() %></td>
-                    <td><a href="<%=response.encodeURL("editProduct.jsp")%>">Edit</a></td>
-                    <td><a href="<%=response.encodeURL("deleteProduct.jsp")%>">Delete</a></td>
+                    <td><a href="<%=response.encodeURL("editProduct.jsp?productCode="+item.getCode())%>">Edit</a></td>
+                    <td><a href="<%=response.encodeURL("deleteProduct.jsp?productCode="+item.getCode())%>">Delete</a></td>
                 </tr>
            <%
        }
