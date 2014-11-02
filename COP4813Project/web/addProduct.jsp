@@ -14,6 +14,7 @@
         <title>Product</title>  
     </head>  
     <body>  
+        <p> <mma:ifEmptyMark color="red" field= ""/> marks required fields</p>
         <form action="addProduct.jsp" method="post">  </form>
 <h1>Add product information below: </h1>
 <form action="<%= response.encodeURL("products.jsp")%>" method="post"> 
