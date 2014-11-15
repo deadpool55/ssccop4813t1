@@ -4,12 +4,11 @@ import business.Product;
 import java.io.*;
 import java.util.*;
 
-
 public class ProductIO {
 
     private static List<Product> products = null;
     private static String filePath = null;
-    
+
     // Called once from the controller based on servlet context
     public static void init(String filePath) {
         ProductIO.filePath = filePath;
@@ -36,13 +35,14 @@ public class ProductIO {
                     p.setCode(code);
                     p.setDescription(description);
                     p.setPrice(price);
+                    System.out.println(p.getCode());
                     products.add(p);
                 }
                 line = in.readLine();
             }
             in.close();
             return products;
- 
+
         } catch (IOException e) {
             System.out.println(e);
             return null;
@@ -62,10 +62,13 @@ public class ProductIO {
 
     public static boolean exists(String productCode) {
         Product p = selectProduct(productCode);
-        if (p != null) return true;
-        else return false;
-    }    
-    
+        if (p != null) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
     private static void saveProducts(List<Product> products) {
         try {
             File file = new File(filePath);
@@ -96,20 +99,19 @@ public class ProductIO {
         for (int i = 0; i < products.size(); i++) {
             Product p = products.get(i);
             if (product.getCode() != null
-                  && product.getCode().equalsIgnoreCase(p.getCode())) {
+                    && product.getCode().equalsIgnoreCase(p.getCode())) {
                 products.set(i, product);
             }
         }
         saveProducts(products);
     }
 
- 
-public static void deleteProduct(Product product) {
+    public static void deleteProduct(Product product) {
         products = selectProducts();
         for (int i = 0; i < products.size(); i++) {
             Product p = products.get(i);
             if (product != null
-                  && product.getCode().equalsIgnoreCase(p.getCode())) {
+                    && product.getCode().equalsIgnoreCase(p.getCode())) {
                 products.remove(i);
             }
         }

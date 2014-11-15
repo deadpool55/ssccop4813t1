@@ -5,12 +5,13 @@ import java.io.Serializable;
 
 public class Product implements Serializable {
 
-    private Long productId;    
+    private Long productId;
     private String code;
     private String description;
     private double price;
 
-    public Product() {}
+    public Product() {
+    }
 
     public Long getId() {
         return productId;
@@ -37,14 +38,14 @@ public class Product implements Serializable {
     }
 
     public String getArtistName() {
-        String artistName = 
-                description.substring(0, description.indexOf(" - "));
+        String artistName
+                = description.substring(0, description.indexOf(" - "));
         return artistName;
     }
 
     public String getAlbumName() {
-        String albumName = 
-                description.substring(description.indexOf(" - ") + 3);
+        String albumName
+                = description.substring(description.indexOf(" - ") + 3);
         return albumName;
     }
 
@@ -56,7 +57,6 @@ public class Product implements Serializable {
         return price;
     }
 
- 
     public String getPriceCurrencyFormat() {
         NumberFormat currency = NumberFormat.getCurrencyInstance();
         return currency.format(price);
@@ -71,4 +71,3 @@ public class Product implements Serializable {
         return "Audio CD";
     }
 }
-
