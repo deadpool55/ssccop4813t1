@@ -5,7 +5,56 @@
             30
         </session-timeout>
     </session-config>
+    <security-constraint>
+        <web-resource-collection>
+            <web-resource-name>securedapp</web-resource-name>
+            <description/>
+            <url-pattern>/products.jsp</url-pattern>
+            <url-pattern>/addProduct.jsp</url-pattern>
+            <url-pattern>/deleteProduct.jsp</url-pattern>
+            <url-pattern>/editProduct.jsp</url-pattern>
+        </web-resource-collection>
+        <web-resource-collection>
+            <web-resource-name>Programmer</web-resource-name>
+            <description/>
+            <url-pattern>/products.jsp</url-pattern>
+            <url-pattern>/addProduct.jsp</url-pattern>
+            <url-pattern>/deleteProduct.jsp</url-pattern>
+            <url-pattern>/editProduct.jsp</url-pattern>
+        </web-resource-collection>
+        <web-resource-collection>
+            <web-resource-name>Support</web-resource-name>
+            <description/>
+            <url-pattern>/products.jsp</url-pattern>
+            <url-pattern>/addProduct.jsp</url-pattern>
+            <url-pattern>/deleteProduct.jsp</url-pattern>
+            <url-pattern>/editProduct.jsp</url-pattern>
+        </web-resource-collection>
+        <auth-constraint>
+            <description/>
+            <role-name>Programmer</role-name>
+            <role-name>Support</role-name>
+        </auth-constraint>
+        <user-data-constraint>
+            <transport-guarantee>CONFIDENTIAL</transport-guarantee>
+        </user-data-constraint>
+    </security-constraint>
     <welcome-file-list>
         <welcome-file>index.jsp</welcome-file>
     </welcome-file-list>
+    <login-config>
+        <auth-method>FORM</auth-method>
+        <form-login-config>
+            <form-login-page>/login.jsp</form-login-page>
+            <form-error-page>/loginError.jsp</form-error-page>
+        </form-login-config>
+    </login-config>
+    <security-role>
+        <description/>
+        <role-name>Programmer</role-name>
+    </security-role>
+    <security-role>
+        <description/>
+        <role-name>Support</role-name>
+    </security-role>
 </web-app>
