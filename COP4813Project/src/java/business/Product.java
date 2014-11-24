@@ -1,10 +1,17 @@
+//Original Code by Omar / Modified JPA Code by Heather Roberts 11/23/2014
 package business;
 
 import java.text.NumberFormat;
 import java.io.Serializable;
+import javax.persistence.Entity;//Modified Line
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 
+@Entity// Modified Line
 public class Product implements Serializable {
-
+    @Id // Modifed Line
+    @GeneratedValue(strategy=GenerationType.AUTO) // Modified Line
     private Long productId;    
     private String code;
     private String description;
